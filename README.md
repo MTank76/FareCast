@@ -1,4 +1,4 @@
-# 🚖 FareCast: Ride Fare Surge Analytics (RFSA)
+# 🚖 FareCast: Ride Fare Surge Analytics
 
 # 🚀 Business Use Case : Predictive Ride Fare Surge Analytics & Market Intelligence
 
