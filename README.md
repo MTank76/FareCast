@@ -22,20 +22,20 @@ The problem was approached as a **Dynamic Pricing and Fare Prediction** challeng
 * **Model Architecture:** The system utilizes a modular approach, offering a **Market Overview** for macro pricing trends and provider market share, a **Fare Estimator** for real-time cost forecasting based on custom parameters, and a **Model Comparison** tool to evaluate the efficacy of algorithms like Random Forest, Gradient Boosting, and KNN.
 * **Deployment:** The predictive engine is hosted via a high-fidelity **Streamlit** web application, featuring an intuitive, glassmorphism dark-themed interface designed for urban mobility and market intelligence analysis.
 
-## Data Pipeline Methodology
+## ⚙️ Data Pipeline Methodology
 The data engineering pipeline was designed to integrate and clean disjointed sources for a unified analysis:
 * **Data Integration:** Merged the raw `cab_rides.csv` and `weather.csv` datasets by unifying UNIX timestamps into standard datetime formats and joining records based on a composite `location - date - hour` key.
 * **Aggregation:** Grouped weather data by location and hour, aggregating parameters like temperature, pressure, clouds, and rain using mean values to provide an accurate contextual weather snapshot for each ride.
 * **Data Cleansing:** Handled missing values by filling null rain records with zeroes and dropping rows with missing price targets.
 * **Outlier Mitigation:** Applied the Interquartile Range (IQR) method (1.5 * IQR) to filter out extreme price anomalies, ensuring the models learn the true underlying surge patterns rather than noise.
 
-## Feature Engineering
+## 💡 Feature Engineering
 To optimize the machine learning models, several domain-specific features were extracted and engineered:
 * **Temporal Segmentation:** Extracted the hour from timestamps and categorized rides into distinct operational shifts: 'Morning', 'Afternoon', 'Night', and 'Late Night'.
 * **Weather Flags:** Engineered categorical weather indicators to explicitly flag 'Raining' versus 'Clear' conditions.
 * **Automated Transformations:** Built a robust Scikit-Learn `Pipeline` and `ColumnTransformer`, applying `OneHotEncoder` to categorical dimensions (`cab_type`, `destination`, `source`, `name`, `day_time`) and `StandardScaler` to continuous numerical features (`distance`, `temp`, `clouds`, `pressure`, `rain`, `humidity`, `wind`, `surge_multiplier`).
 
-## Key Business Insights
+## 📊 Key Business Insights
 Through exploratory data analysis and model evaluation, the following operational insights were uncovered:
 * **Algorithm Efficacy:** The Random Forest Regressor significantly outperformed Linear Regression, Gradient Boosting, and KNN. It effectively captured the non-linear complexities of ride-share pricing, achieving an R² score of ~0.94 for Uber and ~0.89 for Lyft.
 * **Market Equilibrium:** Uber and Lyft maintain an almost perfectly balanced market share in the Boston dataset (~52% vs ~48%), confirming an equitable representation of both major ride-hailing platforms without heavy class imbalance.
@@ -56,7 +56,7 @@ RFSA/
 └── requirements.txt               # Project Dependencies
 ```
 
-## Tech Stack
+## 🛠️ Tech Stack
 This project utilizes a modern data science stack to process, model, and visualize ride-share data:
 * **Programming Language:** Python
 * **Data Processing & Analytics:** Pandas, NumPy
@@ -81,9 +81,9 @@ This project utilizes a modern data science stack to process, model, and visuali
     ```
     
 3.  **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+    ```bash
+     pip install -r requirements.txt
+    ```
 
 4.  **Run the Notebook:**
     Open `RFSA_Uber&Lyft-Boston.ipynb` in Jupyter Notebook or VS Code and run all cells.
@@ -93,9 +93,9 @@ This project utilizes a modern data science stack to process, model, and visuali
 6. Ensure the serialized model files (`surge_pricing_model.pkl` and `label_encoders.pkl`) are in the root directory.
 
 7.  **Fire up the Dashboard**
-   ```bash
-   streamlit run app.py
-   ```
+    ```bash
+    streamlit run app.py
+     ```
 
 > **Quick Start:** `pip install -r requirements.txt && streamlit run app.py`
 
