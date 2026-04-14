@@ -84,8 +84,10 @@ PLOTLY_THEME = "plotly_dark"
 @st.cache_data(show_spinner="Loading Data...")
 def load_data():
     try:
+         # The direct download URL using your specific Google Drive File ID
+         csv_url = "https://drive.google.com/uc?export=download&id=1q6I5CBd4Pn0I4N1SmiDa9WdLxxZIvPIx"
         # Attempt to load real data
-        df_rides = pd.read_csv('Data/cab_rides.csv')
+        df_rides = pd.read_csv(csv_url)
         df_weather = pd.read_csv('Data/weather.csv')
         
         df_rides['date_time'] = pd.to_datetime(df_rides['time_stamp']/1000, unit='s')
