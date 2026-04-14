@@ -84,8 +84,9 @@ PLOTLY_THEME = "plotly_dark"
 @st.cache_data(show_spinner="Loading Data...")
 def load_data():
     try:
-         # The direct download URL using your specific Google Drive File ID
-         csv_url = "https://drive.google.com/uc?export=download&id=1q6I5CBd4Pn0I4N1SmiDa9WdLxxZIvPIx"
+        # The direct download URL using your specific Google Drive File ID
+        csv_url = "https://drive.google.com/uc?export=download&id=1q6I5CBd4Pn0I4N1SmiDa9WdLxxZIvPIx"
+        
         # Attempt to load real data
         df_rides = pd.read_csv(csv_url)
         df_weather = pd.read_csv('Data/weather.csv')
@@ -126,8 +127,8 @@ def load_data():
         merged_df = merged_df[(merged_df['price'] >= (Q1 - 1.5 * IQR)) & (merged_df['price'] <= (Q3 + 1.5 * IQR))]
         return merged_df
 
-    except FileNotFoundError:
-        # --- ROBUST MOCK DATA GENERATOR (If CSVs are missing) ---
+    except Exception:
+        # --- ROBUST MOCK DATA GENERATOR (If CSVs or Drive Link fail) ---
         np.random.seed(42)
         n = 3000
         cab_types = np.random.choice(['Uber', 'Lyft'], n)
