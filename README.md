@@ -99,6 +99,8 @@ This project utilizes a modern data science stack to process, model, and visuali
 
 > **Quick Start:** `pip install -r requirements.txt && streamlit run app.py`
 
+---
+
 ## 🤝 References
 
   * Dataset Source: [Uber & Lyft Cab Prices](https://www.kaggle.com/datasets/ravi72munde/uber-lyft-cab-prices)
